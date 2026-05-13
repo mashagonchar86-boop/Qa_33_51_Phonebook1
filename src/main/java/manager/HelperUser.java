@@ -70,6 +70,7 @@ public class HelperUser extends HelperBase {
             // click cancel -->alert.dismiss();
             //type into alert -->alert.sendKeys("text");
             pause(5000);
+            System.out.println(alert.getText());
             alert.accept();
             return true;
         }
