@@ -57,6 +57,7 @@ public class HelperUser extends HelperBase {
     }
 
     public boolean isLogged() {
+
         return isElementPresent(By.xpath("//button[text()='Sign Out']"));
     }
 
@@ -86,5 +87,13 @@ public class HelperUser extends HelperBase {
         boolean res = wait.until(ExpectedConditions
                 .textToBePresentInElement(wd.findElement(By.cssSelector(".contact-page_message__2qafk>h1")),"No Contacts here!"));
         return res;
+    }
+
+    public void login() {
+        click(By.cssSelector("a[href='/login']"));
+        fillLoginRegistrationForm("roma123@gmail.com", "m341339182P$");
+        submitLogin();
+
+
     }
 }
