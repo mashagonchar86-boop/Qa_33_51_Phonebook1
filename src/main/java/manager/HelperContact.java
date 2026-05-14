@@ -3,6 +3,9 @@ package manager;
 import models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class HelperContact extends HelperBase{
     public HelperContact(WebDriver wd) {
@@ -34,6 +37,27 @@ public class HelperContact extends HelperBase{
     }
 
     public boolean isContactPresent(String name) {
-        return wd.findElements(By.xpath("//h2[text()='" + name + "']")).size() > 0;
+        return !wd.findElements(By.xpath("//h2[text()='" + name + "']")).isEmpty();
+        //return wd.findElements(By.xpath("//h2[text()='" + name + "']")).size() > 0;
+    }
+
+    public boolean isContactAddedByName(String name) {
+        List<WebElement> list = wd.findElements(By.cssSelector("h2"));
+        for(WebElement element:list){
+            if(element.getText().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isContactAddedByPhone(String telephoneNumber) {
+        List<WebElement> list = wd.findElements(By.cssSelector("h3"));
+        for(WebElement element:list){
+            if(element.getText().equals(telephoneNumber)){
+                return true;
+            }
+        }
+        return false;
     }
 }

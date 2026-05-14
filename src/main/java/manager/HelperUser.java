@@ -1,12 +1,10 @@
 package manager;
 
-//import models.User;
-
 import models.User;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -91,6 +89,7 @@ public class HelperUser extends HelperBase {
 
     public void login() {
         click(By.cssSelector("a[href='/login']"));
+        openLoginRegistrationForm();
         fillLoginRegistrationForm("roma123@gmail.com", "m341339182P$");
         submitLogin();
 
